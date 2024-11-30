@@ -1,0 +1,313 @@
+/* Modern UI Theme Colors */
+:root {
+    /* Dark theme colors (VS Code-like) */
+    --dark-bg: #1e1e1e;
+    --dark-terminal-bg: #1e1e1e;
+    --dark-text: #d4d4d4;
+    --dark-input-bg: #3c3c3c;
+    --dark-border: #444444;
+    --dark-hover: #2a2d2e;
+    --dark-active: #37373d;
+    --dark-selection: #264f78;
+    --dark-highlight: #2977c9;
+
+    /* Light theme colors */
+    --light-bg: #ffffff;
+    --light-terminal-bg: #f3f3f3;
+    --light-text: #333333;
+    --light-input-bg: #ffffff;
+    --light-border: #e0e0e0;
+    --light-hover: #f0f0f0;
+    --light-active: #e8e8e8;
+    --light-selection: #add6ff;
+    --light-highlight: #0078d4;
+
+    /* Syntax highlighting colors */
+    --syntax-keyword: #569cd6;
+    --syntax-string: #ce9178;
+    --syntax-number: #b5cea8;
+    --syntax-comment: #6a9955;
+    --syntax-function: #dcdcaa;
+    --syntax-type: #4ec9b0;
+    --syntax-error: #f14c4c;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: background-color 0.3s;
+}
+
+.app-container.dark {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.app-container.light {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.dark .header {
+    background-color: var(--dark-terminal-bg);
+    border-color: var(--dark-border);
+}
+
+.light .header {
+    background-color: var(--light-terminal-bg);
+    border-color: var(--light-border);
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+/* Main content */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1rem;
+    padding: 1rem;
+    height: calc(100vh - 4rem);
+}
+
+/* Terminal Section */
+.terminal-section {
+    background-color: var(--dark-terminal-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.light .terminal-section {
+    background-color: var(--light-terminal-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.terminal-header {
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-panel);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light .terminal-header {
+    background-color: var(--light-panel);
+    border-bottom-color: var(--light-border);
+}
+
+.terminal-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.control.close { background-color: #ff5f56; }
+.control.minimize { background-color: #ffbd2e; }
+.control.maximize { background-color: #27c93f; }
+
+/* Output Section */
+.output-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.history-panel, .ai-panel {
+    background-color: var(--dark-panel);
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.light .history-panel,
+.light .ai-panel {
+    background-color: var(--light-panel);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel-header {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--dark-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.light .panel-header {
+    border-bottom-color: var(--light-border);
+}
+
+.loading {
+    font-size: 0.8rem;
+    color: var(--dark-accent);
+}
+
+.light .loading {
+    color: var(--light-accent);
+}
+
+.history-content, .ai-content {
+    padding: 1rem;
+    overflow-y: auto;
+    height: calc(50vh - 100px);
+}
+
+.history-item {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.history-item .prompt {
+    color: var(--dark-success);
+}
+
+.light .history-item .prompt {
+    color: var(--light-success);
+}
+
+.history-item.error {
+    color: var(--dark-error);
+}
+
+.light .history-item.error {
+    color: var(--light-error);
+}
+
+.error-icon {
+    font-size: 1rem;
+}
+
+.ai-response {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: var(--dark-bg);
+    border-radius: 8px;
+}
+
+.light .ai-response {
+    background-color: var(--light-bg);
+}
+
+.ai-icon {
+    font-size: 1.2rem;
+}
+
+.ai-placeholder {
+    color: var(--dark-text);
+    opacity: 0.7;
+    text-align: center;
+    padding: 2rem;
+}
+
+.light .ai-placeholder {
+    color: var(--light-text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-border);
+    border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+    background: var(--light-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-accent);
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+    background: var(--light-accent);
+}
+
+/* Terminal syntax highlighting */
+.syntax-keyword { color: var(--syntax-keyword); }
+.syntax-string { color: var(--syntax-string); }
+.syntax-number { color: var(--syntax-number); }
+.syntax-comment { color: var(--syntax-comment); }
+.syntax-function { color: var(--syntax-function); }
+.syntax-type { color: var(--syntax-type); }
+.syntax-error { color: var(--syntax-error); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: var(--dark-terminal-bg);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: var(--dark-border);
+    border-radius: 5px;
+}
+
+.light ::-webkit-scrollbar-track {
+    background: var(--light-terminal-bg);
+}
+
+.light ::-webkit-scrollbar-thumb {
+    background: var(--light-border);
+    border-radius: 5px;
+}
